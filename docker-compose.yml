@@ -1,0 +1,19 @@
+version: '3'
+services:
+  tmail:
+    image: testmail
+    ports:
+      - "25:25"
+      - "80:80"
+      - "587:587"
+      - "143:143"
+    volumes:
+      - ./config/aliases.cfg:/etc/postfix/virtual:ro
+      - ./config/domains.cfg:/etc/postfix/virtual-mailbox-domains:ro
+      - ./config/passwords.cfg:/etc/dovecot/passwd:ro
+    environment:
+      - MYDOMAIN=qtestmail.mooo.com
+#      - HOSTNAME=qtestmail.mooo.com
+#      - MYHOSTNAME=qtestmail.mooo.com
+
+
